@@ -1,0 +1,12 @@
+{
+  "name": "webservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webServiceSOAP.js",
+  "scripts": {
+    "start": "node ./soap.xml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

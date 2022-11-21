@@ -1,0 +1,51 @@
+>> ENUNCIADO <<
+Uma empresa precisa se comunicar com outras para enviar informações pessoais sobre seus clientes,
+como nome, endereço e número de telefone. 
+É importante garantir a segurança desses dados e se preocupar com quem eles são compartilhados. 
+Para isso, crie a estrutura de um web service, que demonstra exemplos de comunicação SOAP (requisição e resposta em xmls) 
+e explique como ele funciona.  
+
+
+###### SOAP REQUEST ######
+
+POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+<soap:Body xmlns:m="http://www.example.org/stock">
+  <m:GetCadastro>
+    <m:CadastroID>5553312</m:CadastroID>
+    <m:CadastroCEP>55123445</m:CadastroCEP>
+  </m:GetCadastro>
+</soap:Body>
+</soap:Envelope>
+
+
+###### SOAP RESPONSE ######
+HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+<soap:Body xmlns:m="http://www.example.org/stock">
+  <m:GetCadastroResponse>
+    <m:CadastroName>Bruno Arruda</m:CadastroName>
+    <m:Cadastrologradouro>Rua</m:Cadastrologradouro>
+    <m:Cadastroendereco>José Gusmão</m:Cadastroendereco>
+    <m:Cadastronumero>55</m:Cadastronumero>
+    <m:Cadastrolobairro>Morumbi</m:Cadastrobairro>
+    <m:CadastroCidadeEstado>São Paulo - SP</m:CadastroCidadeEstado>
+    <m:CadastroNumber>55(11)911554488</m:CadastroNumber>
+  </m:GetCadastrResponse>
+</soap:Body>
+</soap:Envelope>
