@@ -4,7 +4,7 @@
   "description": "",
   "main": "webServiceSOAP.js",
   "scripts": {
-    "start": "node ./soap.xml"
+    "start": "node metodoHttp.js"
   },
   "keywords": [],
   "author": "",

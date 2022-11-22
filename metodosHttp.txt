@@ -1,0 +1,221 @@
+MÉTODOS HTTP
+Faça um projeto explicando como funcionam os métodos HTTP com exemplos de requisições, sua utilização e em qual momento 
+cada um dos métodos devem ser utilizados. 
+Além disso, descreva o que é WSDL, seu significado e sua função.
+
+
+## GET ##
+
+É método é o mais utilizado, tem a função de solicitar ou requisitar algum recurso ao servidor. É geralmente usado para o retorno
+de informações sobre uma entidade especificamente ou uma lista delas, mas quando trata-se sobre arquivos muito extensos como listas
+de dados, é preciso que fique atento sobre a performance da API, e usa-se o conceito de Paginação, que é preferir mostrar a 
+informação repartida em páginas, do que mostrar ela completa de uma vez só, ampliando assim a velocidade de tempo de resposta da API.
+
+ex: 
+
+GET =>  https://api.exemplo.com.br/users/1
+
+Request:
+
+    >>nada enviado<<
+
+Response:
+    HTTP/2 200
+    Content-Type: aplication/Json
+    Cache-control: no-cahe
+
+    {
+        "id":1,
+        "name":"João Costa",
+        "active":true
+    }
+
+
+## POST ##
+
+Método usado para enviar informações ao servidor, é utilizado de forma mais popular em cadastros de dados retirados de um formulário
+e também quando enviamos um arquivo para o servidor: seja isso uma foto de perfil, um post no Instagram, tudo isso é usado o método
+POST.
+
+ex:
+
+POST => https://api.exemplo.com.br/users
+
+Request:
+    {
+        "name":"João Costa",
+        "active":true
+    }
+
+Response:
+    {
+        "id":2,
+        "name":"João Costa"
+        "active":true
+    }
+
+
+
+## HEAD ##
+
+Esse método é muito similar com o GET, a diferença é que esse retorna apenas o cabeçalho da resposta, enquanto o GET retorna 
+tanto o cabeçalho quanto o corpo da resposta.
+
+ex: 
+
+HEAD =>  https://api.exemplo.com.br/users/1
+
+Request:
+
+    >>nada enviado<<
+
+Response:
+    HTTP/2 200
+    Content-Type: aplication/Json
+    Cache-control: no-cahe
+  
+
+## PUT ##
+
+O PUT é responsável por editar arquivos e informações já existentes. Esse método usa-se juntamente com um parâmetro na 
+URL da requisição, que ajudará a identificar através de uma chave única (id) qual elemento ele está referenciando.
+
+PUT => https://api.exemplo.com.br/users/2
+
+ex:
+
+Request:
+    {
+        "name":"Flavia Gomes",
+        "active":true
+    }
+
+Response:
+    {
+        "id":2,
+        "name":"Flavia Gomes"
+        "active":true
+    }
+
+
+
+## DELETE ##
+
+Esse método é bem autoexplicativo, deleta arquivos ou informações presentes no banco de dados. Igual o PUT, é recomendável que
+utilize-o usando um parâmetro na URL da requisição, para que evite problemas de deletar dois arquivos/informações ao mesmo tempo.
+
+DELETE => https://api.exemplo.com.br/users/1
+
+ex:
+
+Request:
+    
+    >> pode ou não usar <<
+
+Response:
+
+    >> pode ou não usar <<
+   obs. convem usar um status de "sucesso" no cabeçalho confirmando a exclusão
+
+
+
+## OPTIONS ##
+
+É responsável por retornar as informações referentes ao servidor. Esse método é muitíssimo importante para ferramentas de deploy
+como o Heroku, pois ele pega todas as informações necessárias para o deploy de forma automática por meio desse método,
+o que facilita a vida do programador.
+
+ex:
+
+OPTIONS =>  https://api.exemplo.com.br
+
+Request:
+
+    >>nada enviado<<
+
+Response:
+    HTTP/2 200
+    Allow: GET, POST, OPTIONS
+    Access-Control-Allow-Origin: *
+    Access-Control-Allow-Methods: GET,POST,OPTIONS
+    Access-Control-Allow-Headers: Content-Type
+
+
+## TRACE ##
+
+Funciona bem mais como uma ferramenta de debug para as API ‘s. Ele reenvia a última requisição para o servidor e verifica se 
+houve alguma interferência de servidores de terceiros.
+
+
+
+## CONNECT ##
+
+Dentre os métodos, esse é o mais específico e impopular, é responsável por conectar a API com algum servidor proxy. 
+É mais utilizado para tentar a conexão com sites que possuem segurança e que não permitem conexão direta, dessa forma, 
+é preciso que se conecte a um servidor proxy para depois conseguir acessar seu destino.
+
+ex:
+
+CONNECT => www.example.com:443 HTTP/1.1
+
+Response:
+CONNECT server.example.com:80 HTTP/1.1
+Host: server.example.com:80
+Proxy-Authorization: basic aGVsbG86d29ybGQ=
+
+
+
+Web Services Description Language (WSDL) é uma linguagem de descrição baseada em XML (Extensible Markup Language). 
+Esta linguagem foi submetida ao World Wide Web Consortium (W3C) como o padrão do setor para descrever serviços web. 
+O poder de WSDL é derivado de dois princípios arquitetônicos principais: a capacidade de descrever um conjunto de operações
+de negócios e a capacidade de separar a descrição em duas unidades básicas. Essas unidades são uma descrição das operações e
+os detalhes de como a operação e as informações associadas a ele são empacotadas.
+Um documento WSDL define serviços como coleções de terminais de rede, ou portas. No WSDL, as definições abstratas de endpoints
+e mensagens são separadas de suas ligações de rede de concreto ou de formato de dados. Essa separação suporta a reutilização de
+definições abstratas: mensagens, que são descrições abstratas de dados trocados, e tipos de porta, que são coleções abstratas 
+de operações. As especificações de protocolo de concreto e formato de dados para um determinado tipo de porta constitui uma ligação
+reutilizável. Uma porta é definida associando um endereço de rede a uma ligação reutilizável, e uma coleção de portas define um 
+serviço. Portanto, um documento WSDL é composto por vários elementos.
+
+
+
++---------------------------+
+|                           | PORT TYPE - Operations Signatures         
+|                           |
+|        web service        | MESSAGES  - Parameters definitions
+|         interface         |
+|         definition        | TYPES     - Complex type definitions
+|                           |
+|                           | BINDINGS  - Transport passaport and payload format
++---------------------------+
+
++---------------------------+
+|                           | 
+|      web service          | SERVICES - Service definition element         
+|      implementation       |
+|                           | PORTS    - Suport interface bindings
++---------------------------+
+
+Um arquivo WSDL contém as seguintes partes:
+
+Definição de interface de serviço Web
+    Esta parte contém os elementos e os namespaces.
+
+Implementação de serviço Web
+    Esta parte contém a definição do serviço e dos portos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
