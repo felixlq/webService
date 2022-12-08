@@ -4,6 +4,7 @@ import com.softex.fap.servico.CertidaoNascimentoImpl;
 
 import jakarta.xml.ws.Endpoint;
 
+
 public class App 
 {
     public static void main( String[] args ){

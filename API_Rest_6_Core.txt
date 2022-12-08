@@ -1,0 +1,20 @@
+Explique quais são as seis regras de uma API REST.
+
+1. Precisa existir od dois papeis o Cliente e o Servidor.
+
+
+2. Statless, o sistema não pode ter sessões amarradas/criadas para o cliente e as requisições precisam ter 
+todos os dados para o processo ser realizado e a resposta ser completa.
+
+
+3. Precisa permitir que o cache seja feito caso necessário.
+
+
+4. Interface Uniforme - A API não pode fazer distinção de clientes, não pode diferenciar e processar algo diferente
+para navegador, desktop ou mobile.
+
+
+5. Sistema em camadas, entre o cliente e a API deve ser possível adicionar algum serviço como log da aplicação.
+
+
+6. Código sobre demanda por exemplo JavaScript importado direto do servidor da API.
