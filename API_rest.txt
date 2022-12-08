@@ -1,0 +1,100 @@
+Demonstre como fazer as quatro operações de CRUD e suas rotas para obter o recurso de um livro que está no estoque
+de uma livraria. Um livro possui informações como nome, autor e ISBN.
+
+Realize essa atividade no WORD ou no Bloco de Notas, suba esse arquivo para algum repositório e 
+compartilhe o link no campo ao lado para que outros desenvolvedores possam analisá-lo.
+
+
+### Create ###
+
+POST http://www.localhost:3000/cadastro
+
+Parâmetros:
+
+NOME        TIPO        IN          DESCRIÇÃO
+Nome        string      header      Nome do livro para cadastro na Aplicação.     
+Autor       string      header      Autor do livro para cadastro.
+ISBN        int         header      Código ISBN do livro. 
+
+RESPOSTA:
+{
+"response_http": "201"    
+"Nome": "Gramática Português"
+"Autor": "José Saraiva"
+"ISBN": 15889
+"cadastro_data": "2012-12-11"
+"update_data": "2012-12-11"
+}
+
+
+
+
+### Read ###
+
+GET http://www.localhost:3000/consulta
+
+Parâmetros:
+
+NOME        TIPO        IN          DESCRIÇÃO
+Nome        string      header      Nome do livro para consulta na Aplicação.     
+Autor       string      header      Autor do livro para consulta.
+ISBN        int         header      Código ISBN do livro para consulta. 
+
+RESPOSTA:
+{
+"response_http": "200"    
+"Nome": "Gramática Português"
+"Autor": "José Saraiva"
+"ISBN": 15889
+"cadastro_data": "2012-12-11"
+"update_data": "2012-12-11"
+}
+
+
+
+
+
+### Update ###
+
+PUT http://www.localhost:3000/alteracao
+
+NOME        TIPO        IN          DESCRIÇÃO    
+Nome        string      header      Nome do livro para localização/alteração.      
+Autor       string      header      Autor do livro para localização/alteração.
+ISBN        int         header      codigo do livro para localização/alteração.
+
+RESPOSTA:
+{
+"response_http": "200"    
+"Nome_antigo": "Gramática de Português"
+"Nome": "Gramática Português"
+"Autor_antigo": "José Saramago"
+"Autor": "José Saraiva"
+"ISBN_antigo" : 15448
+"ISBN": 15889
+"cadastro_data": "2012-12-11"
+"update_data": "2012-12-11"
+}
+
+
+
+
+### Delete ###
+
+DEL http://www.localhost:3000/delecao
+
+NOME        TIPO        IN          DESCRIÇÃO    
+Nome        string      header      Nome do livro para exclusão.      
+Autor       string      header      Autor do livro para exclusão.
+ISBN        int         header      codigo do livro para exclusão.
+
+RESPOSTA:
+{
+"response_http": "200"    
+"Nome": "Gramática Português"
+"Autor": "José Saraiva"
+"ISBN": 15889
+"cadastro_data": "2012-12-11"
+"update_data": "2020-03-1"
+"Delete_data": "2022-11-27"
+}
