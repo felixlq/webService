@@ -4,7 +4,7 @@
   "description": "",
   "main": "crud.js",
   "scripts": {
-    "start": "nodemon ./crudMysql.js"
+    "start": "nodemon ./crudjson.js"
   },
   "repository": {
     "type": "git",
