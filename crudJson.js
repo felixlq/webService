@@ -4,6 +4,9 @@ const app = new express()
 app.use(express.json())
 const port = 3001
 
+//PODE USAR O INSOMNIA PARA INSERIR OS DADOS. 
+
+
 const connect = mysql.createConnection({
     host: 'localhost',
     user: 'root',
